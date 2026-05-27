@@ -1,9 +1,6 @@
 from pathlib import Path
-
 import os
-
 from dotenv import load_dotenv
-
 
 # -----------------------------------------
 # Load Environment Variables
@@ -11,18 +8,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 # -----------------------------------------
 # Base Directory
 # -----------------------------------------
 
-BASE_DIR = (
-    Path(__file__)
-    .resolve()
-    .parent
-    .parent
-)
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # -----------------------------------------
 # Security
@@ -38,10 +28,7 @@ DEBUG = os.getenv(
     "True"
 ).lower() == "true"
 
-ALLOWED_HOSTS = [
-    "*"
-]
-
+ALLOWED_HOSTS = ["*"]
 
 # -----------------------------------------
 # Installed Applications
@@ -69,7 +56,6 @@ INSTALLED_APPS = [
     "apps.audit",
 ]
 
-
 # -----------------------------------------
 # Middleware
 # -----------------------------------------
@@ -79,13 +65,8 @@ MIDDLEWARE = [
     # CORS Middleware
     "corsheaders.middleware.CorsMiddleware",
 
-    # Security Middleware
-    "django.middleware.security.SecurityMiddleware",
-
-    # WhiteNoise Middleware
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-
     # Django Middleware
+    "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -94,13 +75,11 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-
 # -----------------------------------------
 # URL Configuration
 # -----------------------------------------
 
 ROOT_URLCONF = "config.urls"
-
 
 # -----------------------------------------
 # Templates
@@ -128,16 +107,14 @@ TEMPLATES = [
     },
 ]
 
-
 # -----------------------------------------
-# WSGI Application
+# WSGI
 # -----------------------------------------
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-
 # -----------------------------------------
-# Database Configuration
+# Database
 # -----------------------------------------
 
 DATABASES = {
@@ -150,7 +127,6 @@ DATABASES = {
     }
 }
 
-
 # -----------------------------------------
 # Password Validation
 # -----------------------------------------
@@ -160,8 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME":
         (
-            "django.contrib.auth."
-            "password_validation."
+            "django.contrib.auth.password_validation."
             "UserAttributeSimilarityValidator"
         ),
     },
@@ -169,8 +144,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME":
         (
-            "django.contrib.auth."
-            "password_validation."
+            "django.contrib.auth.password_validation."
             "MinimumLengthValidator"
         ),
     },
@@ -178,8 +152,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME":
         (
-            "django.contrib.auth."
-            "password_validation."
+            "django.contrib.auth.password_validation."
             "CommonPasswordValidator"
         ),
     },
@@ -187,13 +160,11 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME":
         (
-            "django.contrib.auth."
-            "password_validation."
+            "django.contrib.auth.password_validation."
             "NumericPasswordValidator"
         ),
     },
 ]
-
 
 # -----------------------------------------
 # Internationalization
@@ -207,22 +178,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # -----------------------------------------
 # Static Files
 # -----------------------------------------
 
 STATIC_URL = "/static/"
-
-STATIC_ROOT = (
-    BASE_DIR / "staticfiles"
-)
-
-STATICFILES_STORAGE = (
-    "whitenoise.storage."
-    "CompressedManifestStaticFilesStorage"
-)
-
 
 # -----------------------------------------
 # Media Files
@@ -230,10 +190,7 @@ STATICFILES_STORAGE = (
 
 MEDIA_URL = "/media/"
 
-MEDIA_ROOT = (
-    BASE_DIR / "media"
-)
-
+MEDIA_ROOT = BASE_DIR / "media"
 
 # -----------------------------------------
 # Default Auto Field
@@ -242,7 +199,6 @@ MEDIA_ROOT = (
 DEFAULT_AUTO_FIELD = (
     "django.db.models.BigAutoField"
 )
-
 
 # -----------------------------------------
 # Django REST Framework
@@ -256,16 +212,13 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 10,
 }
 
-
 # -----------------------------------------
 # CORS Configuration
 # -----------------------------------------
 
 CORS_ALLOWED_ORIGINS = [
 
-    # Local Frontend
     "http://localhost:3000",
 
-    # Production Frontend
     "https://enviroaudit.vercel.app",
 ]
